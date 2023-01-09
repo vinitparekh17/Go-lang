@@ -18,7 +18,34 @@ func main() {
 	// pointer arithmetic is not allowed in go
 	// b++ // this will give an error
 
-	var c *int
+	c := 54
+	var ptr *int = &c
 
-	fmt.Println(c) // prints nil
+	fmt.Println(ptr)  // prints memory address of c
+	fmt.Println(*ptr) // prints 54
+
+	// pointer to a pointer
+	var ptrptr **int = &ptr
+	fmt.Println(ptrptr) // prints memory address of ptr
+
+	*ptr = 100
+	fmt.Println(c) // prints 100
+
+	// pointer to a struct
+
+	type person struct {
+		name    string
+		age     int
+		hobboes []string
+	}
+
+	p := person{
+		name:    "Vinit",
+		age:     20,
+		hobboes: []string{"coding", "reading", "gaming"},
+	}
+
+	var ptrp *person = &p
+
+	fmt.Println(*ptrp) // prints memory address of p
 }
